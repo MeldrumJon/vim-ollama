@@ -148,6 +148,8 @@ function! s:HandleError(job, data)
         echom "Error: " .. a:data
         call popup_notification(a:data, #{ pos: "center", time: 3000 })
     endif
+    echom "Encountered error, disabling vim-ollama"
+    call ollama#Disable()
 endfunction
 
 function! s:HandleExit(job, exit_code)
